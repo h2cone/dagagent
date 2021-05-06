@@ -1,0 +1,12 @@
+FROM golang:1.16-alpine3.12 AS builder
+
+WORKDIR /go/src/github.com/h2cone/dagagent
+COPY . .
+
+RUN go build -v
+
+FROM alpine:3.12
+
+WORKDIR /root
+COPY --from=builder /go/src/github.com/h2cone/dagagent/dagagent .
+CMD ["./dagagent"]
