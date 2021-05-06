@@ -4,6 +4,8 @@ import (
 	"crypto/subtle"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/swaggo/echo-swagger"
+	_ "github.com/swaggo/echo-swagger/example/docs"
 	"os"
 )
 
@@ -40,6 +42,7 @@ func Start() {
 		return false, nil
 	}))
 
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	e.GET("/health", HealthCheck)
 	e.POST("/upload", Upload)
 
