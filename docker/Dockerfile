@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM golang:1.16-alpine3.12 AS builder
 
+ENV GOPROXY="https://goproxy.io,direct"
+
 WORKDIR /go/src/github.com/h2cone/dagagent
 COPY go.mod .
 COPY go.sum .
