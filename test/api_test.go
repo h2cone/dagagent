@@ -26,7 +26,7 @@ func TestUpload(t *testing.T) {
 
 	url := "http://" + server.Address + "/upload"
 	method := "POST"
-	src := filepath.Join("dags", "example", "example_complex.py")
+	src := filepath.Join("dags", "example", "example_python_operator.py")
 
 	payload := &bytes.Buffer{}
 	writer := multipart.NewWriter(payload)
